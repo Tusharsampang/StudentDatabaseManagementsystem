@@ -1,7 +1,7 @@
 #Frontend
 from tkinter import*
 import tkinter.messagebox
-from sqlite3 import End
+import database
 
 class Student:
     def __init__(self,root):
@@ -37,12 +37,12 @@ class Student:
             self.txtMobile.delete(0, END)
         def addData():
             if(len(StdID.get())!= 0):
-                End.addStdRec(StdID.get(),Firstname.get(), Surname.get(), DOB.get(),Age.get(), Gender.get(),  Address.get() , Mobile.get())
+                database.addStdRec(StdID.get(),Firstname.get(), Surname.get(), DOB.get(),Age.get(), Gender.get(),  Address.get() , Mobile.get())
                 studentlist.delete(0,END)
                 studentlist.insert(END,(StdID.get(),Firstname.get(), Surname.get(), DOB.get(),Age.get(), Gender.get(),Address.get() , Mobile.get()))
         def DisplayData():
             studentlist.delete(0, END)
-            for row in End.viewData():
+            for row in database.viewData():
                 studentlist.insert(END,row,str(""))
         def StudentRec(event):
             global sd
@@ -66,20 +66,20 @@ class Student:
             self.txtMobile.insert(END, sd[8])
         def DeleteData():
             if (len(StdID.get()) != 0):
-                End.deleteRec(sd[0])
+                database.deleteRec(sd[0])
                 clearData()
                 DisplayData()
         def searchDatabase():
             studentlist.delete(0,END)
-            for row in End.searchData(StdID.get(),Firstname.get(),Surname.get(),DOB.get(),Age.get(),Gender.get(),Address.get(),Mobile.get()):
+            for row in database.searchData(StdID.get(),Firstname.get(),Surname.get(),DOB.get(),Age.get(),Gender.get(),Address.get(),Mobile.get()):
                 studentlist.insert(END,row,str(""))
         def update():
             if(len(StdID.get())!=0):
-                End.deleteRec(sd[0])
+                database.deleteRec(sd[0])
                 if(len(StdID.get())!=0):
-                    End.addStdRec(StdID.get(),Firstname.get(), Surname.get(),DOB.get(),Age.get(),Gender.get(),Address.get(),Mobile.get())
+                    database.addStdRec(StdID.get(),Firstname.get(), Surname.get(),DOB.get(),Age.get(),Gender.get(),Address.get(),Mobile.get())
                     studentlist.delete(0,END)
-                    studentlist.insert(End,(StdID.get(),Firstname.get(), Surname.get(),DOB.get(),Age.get(),Gender.get(),Address.get(),Mobile.get()))
+                    studentlist.insert(database,(StdID.get(),Firstname.get(), Surname.get(),DOB.get(),Age.get(),Gender.get(),Address.get(),Mobile.get()))
 
 
 
