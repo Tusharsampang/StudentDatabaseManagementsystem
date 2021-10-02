@@ -7,8 +7,8 @@ class Student:
     def __init__(self,root):
         self.root = root
         self.root.title("Students Database Management Systems")
-        self.root.geometry("1350x750+0+0")
-        self.root.config(bg="cadet blue")
+        self.root.geometry("1350x750")
+        self.root.config(bg="cornsilk2")
 
         StdID = StringVar()
         Firstname= StringVar()
@@ -69,10 +69,7 @@ class Student:
                 database.deleteRec(sd[0])
                 clearData()
                 DisplayData()
-        def searchDatabase():
-            studentlist.delete(0,END)
-            for row in database.searchData(StdID.get(),Firstname.get(),Surname.get(),DOB.get(),Age.get(),Gender.get(),Address.get(),Mobile.get()):
-                studentlist.insert(END,row,str(""))
+
         def update():
             if(len(StdID.get())!=0):
                 database.deleteRec(sd[0])
@@ -93,17 +90,17 @@ class Student:
 
 
         #Frame
-        MainFrame = Frame(self.root, bg="cadet blue")
+        MainFrame = Frame(self.root, bg="cornsilk2")
         MainFrame.grid()
-        TitFrame = Frame(MainFrame, bd= 2, padx=54, pady=8, bg='Ghost White', relief=RIDGE)
+        TitFrame = Frame(MainFrame, bd= 2, padx=54, pady=8, bg='cornsilk2', relief=RIDGE)
         TitFrame.pack(side=TOP)
-        self.lblTit = Label(TitFrame,font=('arial', 47,'bold'),text="Student Database Management Systems",bg="Ghost White")
+        self.lblTit = Label(TitFrame,font=('arial', 47,'bold'),text="Student Database Management Systems",bg="cornsilk2")
         self.lblTit.grid()
 
         ButtonFrame = Frame(MainFrame, bd=2, width=1350, height=70,padx=18,pady=10, bg="Ghost White" , relief=RIDGE)
         ButtonFrame.pack(side=BOTTOM)
 
-        DataFrame = Frame(MainFrame, bd=1, width=1300,height=400, padx=20,pady=20,relief=RIDGE,bg="cadet blue")
+        DataFrame = Frame(MainFrame, bd=1, width=1300,height=400, padx=20,pady=20,relief=RIDGE,bg="cornsilk2")
         DataFrame.pack(side=BOTTOM)
 
         DataFrameLEFT = LabelFrame(DataFrame, bd=1,width=1000,height=600,padx=20,relief=RIDGE, bg="Ghost White" , font=('arial', 20,'bold'),text="Student Info\n")
@@ -175,14 +172,13 @@ class Student:
         self.btnDeleteData = Button(ButtonFrame, text="Delete", font=('arial', 20, 'bold'), height=1, width=10, bd=4, command= DeleteData)
         self.btnDeleteData.grid(row=0, column=3)
 
-        self.btnSearchData = Button(ButtonFrame, text="Search", font=('arial', 20, 'bold'), height=1, width=10, bd=4, command=searchDatabase)
-        self.btnSearchData.grid(row=0, column=4)
+
 
         self.btnUpdateData = Button(ButtonFrame, text="Update", font=('arial', 20, 'bold'), height=1, width=10, bd=4, command= update)
-        self.btnUpdateData.grid(row=0, column=5)
+        self.btnUpdateData.grid(row=0, column=4)
 
         self.btnExit = Button(ButtonFrame, text="Exit", font=('arial', 20, 'bold'), height=1, width=10, bd=4, command=iExit)
-        self.btnExit.grid(row=0, column=6)
+        self.btnExit.grid(row=0, column=5)
 
 
 

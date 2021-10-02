@@ -33,13 +33,6 @@ def deleteRec(id):
     con.commit()
     con.close
 
-def searchData(StdID="", Firstname="",Surname="",DOB="", Age="", Gender="",Address="",Mobile=""):
-    con=sqlite3.connect("student.db")
-    cur = con.cursor()
-    cur.execute("SELECT * FROM students WHERE StsID=? OR Firstname=? OR Surname=? OR DOB=? OR Age=? OR Gender=? OR Address=? OR \ Mobile=?",( StdID,  Firstname, Surname,DOB,Age,Gender,Address,Mobile))
-    rows=cur.fetchall()
-    con.close()
-    return rows
 
 def dataUpdate(id,StdID="",Firstname="",Surname="",DOB="",Age="",Gender='',Address="",Mobile=""):
     con=sqlite3.connect("student.db")
